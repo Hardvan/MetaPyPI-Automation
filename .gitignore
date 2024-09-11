@@ -1,4 +1,5 @@
 trial_project/
+test_project/
 __pycache__/
 .env
 build/

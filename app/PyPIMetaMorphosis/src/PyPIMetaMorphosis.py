@@ -181,7 +181,7 @@ setup(
     # __init__.py inside Project folder
     with open("__init__.py", "w") as f:
         f.write(
-            f"from .src.{project_name} import your_project_method  # TODO: Change this")
+            f"from .src.{project_name} import your_project_method  # TODO: Change this\n")
     print(f"✅ Created __init__.py inside {project_name} folder")
 
     # Create src directory and files
@@ -220,4 +220,4 @@ setup(
 # Example Usage
 if __name__ == "__main__":
     create_pypi_project(root_dir="trial_project",
-                        project_name="MyPyPIProject",)
+                        project_name="PyPIMetaMorphosis")
