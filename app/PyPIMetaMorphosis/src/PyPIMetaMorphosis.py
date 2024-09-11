@@ -84,7 +84,7 @@ SOFTWARE.
 
 ## Getting Started
 
-Install the MERNcraft package from PyPI using pip:
+Install the {project_name} package from PyPI using pip:
 
 ```bash
 pip install {project_name}
@@ -177,7 +177,7 @@ setup(
 
 ## Getting Started
 
-Install the MERNcraft package from PyPI using pip:
+Install the {project_name} package from PyPI using pip:
 
 ```bash
 pip install {project_name}
@@ -222,7 +222,7 @@ python {project_name}.py
     # ProjectName.py inside src
     with open(f"{project_name}.py", "w") as f:
         f.write(
-            f"def your_project_method():\n    print('Hello from {project_name}!')  # TODO: Implement this method")
+            f"def your_project_method():\n    print('Hello from {project_name}!\n')  # TODO: Implement this method")
     print(f"✅ Created {project_name}.py in src folder")
 
     # Create test directory and files
