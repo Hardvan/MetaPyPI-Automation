@@ -167,8 +167,36 @@ setup(
     os.makedirs("app", exist_ok=True)
     os.chdir("app")
     # README.md inside app
+    app_readme_content = f'''# {project_name}
+
+## Project on GitHub
+
+## Features
+
+## Use Cases
+
+## Getting Started
+
+Install the MERNcraft package from PyPI using pip:
+
+```bash
+pip install {project_name}
+```
+
+OR
+
+Clone this repository or download the script and run it to create your project structure:
+
+```bash
+git clone your_project_url  # TODO: Add your project's GitHub URL
+cd {project_name}
+python {project_name}.py
+```
+
+## Notes
+'''
     with open("README.md", "w") as f:
-        f.write(readme_content)
+        f.write(app_readme_content)
     print("✅ Created README.md in app folder")
     # __init__.py inside app
     with open("__init__.py", "w") as f:
@@ -208,7 +236,7 @@ setup(
     # test_ProjectName.py
     with open(f"test_{project_name}.py", "w") as f:
         f.write(
-            f"import {project_name}\n")
+            f"import {project_name}\n\n# Write your test cases here\n")
     print(f"✅ Created test_{project_name}.py in test folder")
 
     end_time = time.time()

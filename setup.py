@@ -5,7 +5,7 @@ with open("app/README.md", "r") as f:
 
 setup(
     name="PyPIMetaMorphosis",
-    version="1.0.1",
+    version="1.0.2",
     author="Hardik Pawar",
     author_email="hardikpawarh@gmail.com",
     description="Create a ready-to-publish PyPI project structure with the given project name, author name, author email, and project description.",
