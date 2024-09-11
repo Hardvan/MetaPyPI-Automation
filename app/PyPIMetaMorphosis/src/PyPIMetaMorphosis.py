@@ -2,6 +2,28 @@ import os
 import time
 
 
+def _get_user_choice(prompt):
+    """Get user choice (y/n) and return True if 'y' and False if 'n'.
+
+    Args
+    ----
+    - prompt (str): Prompt message.
+
+    Returns
+    -------
+    - bool: True if 'y' and False if 'n'.
+    """
+    while True:
+        try:
+            print(prompt, end='')
+            choice = input().lower()
+            if choice in ['y', 'n']:
+                return choice == 'y'
+            raise ValueError
+        except ValueError:
+            print("Invalid input. Please enter 'y' or 'n'.")
+
+
 def create_pypi_project(root_dir=os.getcwd(),
                         project_name=None,
                         author_name=None, author_email=None, project_desc=None):
@@ -68,9 +90,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
-    with open("LICENSE", "w") as f:
-        f.write(license_content)
-    print("✅ Created LICENSE file")
+    if os.path.exists("LICENSE"):
+        if not _get_user_choice("LICENSE file already exists. Do you want to overwrite it? (y/n): "):
+            print("❌ Skipped creating LICENSE file")
+        else:
+            with open("LICENSE", "w") as f:
+                f.write(license_content)
+            print("✅ Overwritten LICENSE file")
+    else:
+        with open("LICENSE", "w") as f:
+            f.write(license_content)
+        print("✅ Created LICENSE file")
     # README.md file
     readme_content = f'''# {project_name}
 
@@ -113,26 +143,50 @@ python {project_name}.py
    twine upload dist/*
    ```
 '''
-    with open("README.md", "w") as f:
-        f.write(readme_content)
-    print("✅ Created README.md file")
+    if os.path.exists("README.md"):
+        if not _get_user_choice("README.md file already exists. Do you want to overwrite it? (y/n): "):
+            print("❌ Skipped creating README.md file")
+        else:
+            with open("README.md", "w") as f:
+                f.write(readme_content)
+            print("✅ Overwritten README.md file")
+    else:
+        with open("README.md", "w") as f:
+            f.write(readme_content)
+        print("✅ Created README.md file")
     # .gitignore file
     gitignore_content = '''__pycache__/
 .env
 build/
 '''
-    with open(".gitignore", "w") as f:
-        f.write(gitignore_content)
-    print("✅ Created .gitignore file")
+    if os.path.exists(".gitignore"):
+        if not _get_user_choice(".gitignore file already exists. Do you want to overwrite it? (y/n): "):
+            print("❌ Skipped creating .gitignore file")
+        else:
+            with open(".gitignore", "w") as f:
+                f.write(gitignore_content)
+            print("✅ Overwritten .gitignore file")
+    else:
+        with open(".gitignore", "w") as f:
+            f.write(gitignore_content)
+        print("✅ Created .gitignore file")
     # run.py file
     runpy_content = f'''import {project_name}
 
 if __name__ == "__main__":
     {project_name}.your_project_method  # TODO: Change this method
 '''
-    with open("run.py", "w") as f:
-        f.write(runpy_content)
-    print("✅ Created run.py file")
+    if os.path.exists("run.py"):
+        if not _get_user_choice("run.py file already exists. Do you want to overwrite it? (y/n): "):
+            print("❌ Skipped creating run.py file")
+        else:
+            with open("run.py", "w") as f:
+                f.write(runpy_content)
+            print("✅ Overwritten run.py file")
+    else:
+        with open("run.py", "w") as f:
+            f.write(runpy_content)
+        print("✅ Created run.py file")
     # setup.py file
     setup_content = f'''from setuptools import setup, find_packages
 
@@ -159,9 +213,17 @@ setup(
     python_requires='>=3.6',
 )
 '''
-    with open("setup.py", "w") as f:
-        f.write(setup_content)
-    print("✅ Created setup.py file")
+    if os.path.exists("setup.py"):
+        if not _get_user_choice("setup.py file already exists. Do you want to overwrite it? (y/n): "):
+            print("❌ Skipped creating setup.py file")
+        else:
+            with open("setup.py", "w") as f:
+                f.write(setup_content)
+            print("✅ Overwritten setup.py file")
+    else:
+        with open("setup.py", "w") as f:
+            f.write(setup_content)
+        print("✅ Created setup.py file")
 
     # Step 3: Create app folder & files
     os.makedirs("app", exist_ok=True)
@@ -195,9 +257,17 @@ python {project_name}.py
 
 ## Notes
 '''
-    with open("README.md", "w") as f:
-        f.write(app_readme_content)
-    print("✅ Created README.md in app folder")
+    if os.path.exists("README.md"):
+        if not _get_user_choice("README.md file already exists. Do you want to overwrite it? (y/n): "):
+            print("❌ Skipped creating README.md in app folder")
+        else:
+            with open("README.md", "w") as f:
+                f.write(app_readme_content)
+            print("✅ Overwritten README.md in app folder")
+    else:
+        with open("README.md", "w") as f:
+            f.write(app_readme_content)
+        print("✅ Created README.md in app folder")
     # __init__.py inside app
     with open("__init__.py", "w") as f:
         pass  # Empty file
@@ -207,10 +277,18 @@ python {project_name}.py
     os.makedirs(f"{project_name}", exist_ok=True)
     os.chdir(f"{project_name}")
     # __init__.py inside Project folder
-    with open("__init__.py", "w") as f:
-        f.write(
-            f"from .src.{project_name} import your_project_method  # TODO: Change this\n")
-    print(f"✅ Created __init__.py inside {project_name} folder")
+    init_content = f"from .src.{project_name} import your_project_method  # TODO: Change this\n"
+    if os.path.exists("__init__.py"):
+        if not _get_user_choice("__init__.py file already exists. Do you want to overwrite it? (y/n): "):
+            print("❌ Skipped creating __init__.py inside Project folder")
+        else:
+            with open("__init__.py", "w") as f:
+                f.write(init_content)
+            print(f"✅ Overwritten __init__.py inside {project_name} folder")
+    else:
+        with open("__init__.py", "w") as f:
+            f.write(init_content)
+        print(f"✅ Created __init__.py inside {project_name} folder")
 
     # Create src directory and files
     os.makedirs("src", exist_ok=True)
@@ -220,10 +298,20 @@ python {project_name}.py
         pass  # Empty file
     print("✅ Created empty __init__.py in src folder")
     # ProjectName.py inside src
-    with open(f"{project_name}.py", "w") as f:
-        f.write(
-            f"def your_project_method():\n    print('Hello from {project_name}!\n')  # TODO: Implement this method")
-    print(f"✅ Created {project_name}.py in src folder")
+    project_content = f'''def your_project_method():
+    print('Hello from {project_name}!\n')  # TODO: Implement this method
+'''
+    if os.path.exists(f"{project_name}.py"):
+        if not _get_user_choice(f"{project_name}.py file already exists. Do you want to overwrite it? (y/n): "):
+            print("❌ Skipped creating {project_name}.py in src folder")
+        else:
+            with open(f"{project_name}.py", "w") as f:
+                f.write(project_content)
+            print(f"✅ Overwritten {project_name}.py in src folder")
+    else:
+        with open(f"{project_name}.py", "w") as f:
+            f.write(project_content)
+        print(f"✅ Created {project_name}.py in src folder")
 
     # Create test directory and files
     os.chdir("..")
@@ -234,10 +322,18 @@ python {project_name}.py
         pass  # Empty file
     print("✅ Created empty __init__.py in test folder")
     # test_ProjectName.py
-    with open(f"test_{project_name}.py", "w") as f:
-        f.write(
-            f"import {project_name}\n\n# Write your test cases here\n")
-    print(f"✅ Created test_{project_name}.py in test folder")
+    test_content = f"import {project_name}\n\n# Write your test cases here\n"
+    if os.path.exists(f"test_{project_name}.py"):
+        if not _get_user_choice(f"test_{project_name}.py file already exists. Do you want to overwrite it? (y/n): "):
+            print("❌ Skipped creating test_{project_name}.py in test folder")
+        else:
+            with open(f"test_{project_name}.py", "w") as f:
+                f.write(test_content)
+            print(f"✅ Overwritten test_{project_name}.py in test folder")
+    else:
+        with open(f"test_{project_name}.py", "w") as f:
+            f.write(test_content)
+        print(f"✅ Created test_{project_name}.py in test folder")
 
     end_time = time.time()
 
