@@ -4,6 +4,8 @@ This project creates a PyPI-ready project structure automatically using Python. 
 
 ## Project on PyPI
 
+View the project on PyPI: [PyPIMetaMorphosis](https://pypi.org/project/PyPIMetaMorphosis/)
+
 ## Demonstration Video
 
 ## Features
