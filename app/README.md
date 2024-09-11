@@ -41,14 +41,3 @@ python PyPIMetaMorphosis.py
 
 - Ensure that Python 3.6 or later is installed on your system.
 - Customize the setup.py file as per your project's needs.
-
-## Run the following commands to update the package (for maintainers)
-
-1. Change version in `setup.py`
-2. Run the following commands
-
-   ```bash
-   python setup.py bdist_wheel sdist
-   twine check dist/*
-   twine upload dist/*
-   ```
