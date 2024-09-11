@@ -8,6 +8,8 @@ View the project on PyPI: [PyPIMetaMorphosis](https://pypi.org/project/PyPIMetaM
 
 ## Demonstration Video
 
+[![PyPIMetaMorphosis Demonstration](./images/thumbnail2.png)](https://youtu.be/-AcR4Aasgv0)
+
 ## Features
 
 - Automatically creates a PyPI project structure
