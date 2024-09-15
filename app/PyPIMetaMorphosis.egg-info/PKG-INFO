@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: PyPIMetaMorphosis
-Version: 1.0.4
+Version: 1.0.5
 Summary: Create a ready-to-publish PyPI project structure with the given project name, author name, author email, and project description.
 Home-page: https://github.com/Hardvan/PyPIMetaMorphosis
 Author: Hardik Pawar
@@ -38,7 +38,7 @@ View the project on GitHub: [PyPIMetaMorphosis](https://github.com/Hardvan/PyPIM
 
 ## Getting Started
 
-Install the MERNcraft package from PyPI using pip:
+Install the PyPIMetaMorphosis package from PyPI using pip:
 
 ```bash
 pip install PyPIMetaMorphosis

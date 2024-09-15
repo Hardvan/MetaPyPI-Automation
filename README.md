@@ -25,8 +25,8 @@ View the project on PyPI: [PyPIMetaMorphosis](https://pypi.org/project/PyPIMetaM
 
 ## Getting Started
 
-Install the MERNcraft package from PyPI using pip:
-
+Install the PyPIMetaMorphosis package from PyPI using pip:
+PyPIMetaMorphosis
 ```bash
 pip install PyPIMetaMorphosis
 ```
